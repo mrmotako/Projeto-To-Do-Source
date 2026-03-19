@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/tasks")
 public class TaskController {
@@ -25,24 +24,23 @@ public class TaskController {
     }
 
     @PostMapping
-    public Task criar(@RequestBody Task task) {
-        if (task.getDataCriacao() == null) {
-            task.setDataCriacao(new java.util.Date());
-        }
-        if (task.getFeito() == null) {
-            task.setFeito(false);
-        }
-        return taskRepository.save(task);
+public Task criar(@RequestBody Task task) {
+    if (task.getDataCriacao() == null) {
+        task.setDataCriacao(java.time.LocalDateTime.now()); // ✅ trocado
     }
-
+    if (task.getFeito() == null) {
+        task.setFeito(false);
+    }
+    return taskRepository.save(task);
+}
     @PutMapping("/{id}/done")
-    public Task marcar(@PathVariable Integer id) {
-        Task task = taskRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Task não encontrada com id: " + id));
-        task.setFeito(true);
-        task.setFinalizadoEm(new java.util.Date());
-        return taskRepository.save(task);
-    }
+public Task marcar(@PathVariable Integer id) {
+    Task task = taskRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Task não encontrada com id: " + id));
+    task.setFeito(true);
+    task.setFinalizadoEm(java.time.LocalDateTime.now()); // ✅ trocado
+    return taskRepository.save(task);
+}
 
     @PutMapping("/{id}/undone")
     public Task desmarcar(@PathVariable Integer id) {

@@ -1,7 +1,7 @@
 package com.example.definitiva_projeto.model;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -17,12 +17,10 @@ public class Task {
     private Boolean feito = false;
 
     @Column(name = "data_criacao")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCriacao;
+    private LocalDateTime dataCriacao;
 
     @Column(name = "finalizado_em")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date finalizadoEm;
+    private LocalDateTime finalizadoEm;
 
     // Construtor padrão (obrigatório para JPA)
     public Task() {}
@@ -31,7 +29,7 @@ public class Task {
     public Task(String nome) {
         this.nome = nome;
         this.feito = false;
-        this.dataCriacao = new Date();
+        this.dataCriacao = LocalDateTime.now(); // ✅ trocado de new Date()
     }
 
     // Getters e Setters
@@ -59,19 +57,19 @@ public class Task {
         this.feito = feito;
     }
 
-    public Date getDataCriacao() {
+    public LocalDateTime getDataCriacao() { // ✅ trocado de Date
         return dataCriacao;
     }
 
-    public void setDataCriacao(Date dataCriacao) {
+    public void setDataCriacao(LocalDateTime dataCriacao) { // ✅ trocado de Date
         this.dataCriacao = dataCriacao;
     }
 
-    public Date getFinalizadoEm() {
+    public LocalDateTime getFinalizadoEm() { // ✅ trocado de Date
         return finalizadoEm;
     }
 
-    public void setFinalizadoEm(Date finalizadoEm) {
+    public void setFinalizadoEm(LocalDateTime finalizadoEm) { // ✅ trocado de Date
         this.finalizadoEm = finalizadoEm;
     }
 }

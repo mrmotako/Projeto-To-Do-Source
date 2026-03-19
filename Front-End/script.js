@@ -26,21 +26,18 @@ async function addTask() {
         alert("Por favor, digite uma tarefa!");
         return;
     }
-
     try {
         const response = await fetch(`${API_URL}/api/tasks`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ nome: nome })
         });
-
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
-
         inputBox.value = "";
         inputBox.focus();
-        await loadTasks(); 
+        await loadTasks();
     } catch (error) {
-        console.error("Erro ao adicionar tarefa:", error);
+        alert("Não foi possível conectar ao servidor. Verifique se o back-end está rodando.");
     }
 }
 
@@ -54,7 +51,7 @@ async function toggleTask(id, feito) {
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
         await loadTasks();
     } catch (error) {
-        console.error("Erro ao atualizar tarefa:", error);
+        alert("Erro ao atualizar tarefa. Verifique se o back-end está rodando.");
     }
 }
 
@@ -67,7 +64,7 @@ async function deleteTask(id) {
         if (!response.ok) throw new Error(`Erro: ${response.status}`);
         await loadTasks();
     } catch (error) {
-        console.error("Erro ao deletar tarefa:", error);
+        alert("Erro ao deletar tarefa. Verifique se o back-end está rodando.");
     }
 }
 
