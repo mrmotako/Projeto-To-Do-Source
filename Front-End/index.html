@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>To-Do List</title>
+        <link rel="stylesheet" href="style.css">
+    </head>        
+    <body>    
+        <div class="container">
+            <div class="todo-app">
+                <h2 class="title">To-Do App <img src="Images/icon.png"></h2>
+
+                <div class="row">
+                    <input type="text" id="inputBox" placeholder="Adicione uma tarefa...">
+                    <button onclick="addTask()">Add</button>
+                </div>
+
+                <div class="filters">
+                    <button onclick="filterTasks('all')">Todas</button>
+                    <button onclick="filterTasks('pending')">Pendentes</button>
+                    <button onclick="filterTasks('completed')">Concluídas</button>
+                </div>
+
+                <ul id="listContainer"></ul>
+
+                <div class="divider"></div>
+
+                <div class="row">
+                    <input type="text" id="searchBox" placeholder="Pesquisar tarefa..." onkeyup="searchTask()">
+                </div>
+
+                <div class="pagination">
+                    <button onclick="changePage(-1)">Prev</button>
+                    <span id="pageInfo"></span>
+                    <button onclick="changePage(1)">Next</button>
+                </div>
+
+            </div>
+        </div>
+
+        <script src="script.js"></script> 
+    </body>
+</html>
