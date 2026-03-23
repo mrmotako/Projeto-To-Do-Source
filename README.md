@@ -12,6 +12,8 @@ DefinitivaProjetoApplication.java
 
 O servidor sobe em http://localhost:8080
 
+Para ver no console abra em http://localhost:8080/api/tasks
+
 ### 2. Front-end
 Abra a pasta `Front-End` no VS Code, clique com botão direito
 no `index.html` e escolha "Open with Live Server"
